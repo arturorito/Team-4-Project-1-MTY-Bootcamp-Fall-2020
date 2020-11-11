@@ -78,3 +78,8 @@ main {
   bottom: 0;
   margin: auto;
 }
+
+#Tittlehead {
+  text-align: center;
+  color: rgb(59, 96, 165);
+}
