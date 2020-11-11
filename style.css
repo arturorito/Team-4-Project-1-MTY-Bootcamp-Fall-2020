@@ -82,4 +82,11 @@ main {
 #Tittlehead {
   text-align: center;
   color: rgb(59, 96, 165);
+  font-size: 35px;
+}
+
+#username {
+  text-align: center;
+  font-size: 35px;
+  color: rgb(59, 96, 165);
 }

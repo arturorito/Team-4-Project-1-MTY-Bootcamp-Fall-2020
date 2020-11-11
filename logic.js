@@ -1,5 +1,4 @@
 document.getElementById("buttonstart").onclick = function() {myFunction()};
-const userName = document.getElementById("username");
 
 function myFunction() {
   event.preventDefault();
@@ -12,8 +11,7 @@ function myFunction() {
 
 function get_localStorage(){
     let name = localStorage.getItem("user");
-    alert(name);
-    userName.innerHTML=  name; 
+    document.getElementById("username").innerHTML= name; 
 }
 
 // function getUserName() {
