@@ -1,11 +1,65 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
+
+  <head>
+    <title>Video Games Search</title>
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.4.1/semantic.min.css">
+  </head>
 <body>
-    
+    <div class="ui action input">
+        <input type="text" placeholder="Search for a video game" class="game-search">
+        <button class="ui icon button game-click">
+          <i class="search icon"></i>
+        </button>
+      </div>
+
+  <!-- We'll be dumping our JSON contents in here -->
+  <div id="game-results"></div>
+
+  <!--URL: https://www.giantbomb.com/api/games/?api_key=52ca84e66e5367f593e2135a2e58d4acb13d3e3a
+
+    https://www.giantbomb.com/api/games/?api_key=52ca84e66e5367f593e2135a2e58d4acb13d3e3a&format=json&filter=name:pokemon
+    -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <script type="text/javascript">
+
+    // This .on("click") function will trigger the AJAX Call
+    $(".game-click").on("click", function(event) {
+
+      event.preventDefault();
+
+      var gameName = $(".game-search").val();
+      var apiURL = "https://www.giantbomb.com/api/games/?api_key="; 
+      var apikey = "52ca84e66e5367f593e2135a2e58d4acb13d3e3a";
+      var other = "&format=jsonp&json_callback&filter=name:"
+
+      var queryURL = apiURL + apikey + other + gameName 
+
+
+      $.ajax({
+        url: queryURL,
+        method: "GET",
+        dataType: 'jsonp',
+        jsonp: "json_callback",
+      }).then(function(response) {
+        var newElement = $("<div>").text(response.results[3].name)
+        $("#game-results").append(newElement);
+      console.log(response);
+      });
+
+      console.log(queryURL);
+      
+
+    });
+  </script>
+
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script
+      src="https://code.jquery.com/jquery-3.1.1.min.js"
+      integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8="
+      crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.4.1/semantic.min.js"></script>    
 </body>
-</html>
+  </html>
+  
