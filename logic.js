@@ -14,13 +14,6 @@ function get_localStorage(){
     document.getElementById("username").innerHTML= name; 
 }
 
-// function getUserName() {
- //   event.preventDefault();
-  //  userName.text("new text");
-  //  alert("hello");
- // }
-  
-//   window.getUserName;
 
 
 

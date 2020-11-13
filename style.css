@@ -10,6 +10,9 @@ body {
   background-image: url("./files/games.jpg");
   background-size: cover;
   background-position: top center;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
 }
 
 .app-wrap {
@@ -89,4 +92,65 @@ main {
   text-align: center;
   font-size: 35px;
   color: rgb(59, 96, 165);
+}
+
+/*Footer */
+footer {
+  background: #191919;
+  color: #fff;
+  margin: 0;
+  @import "https://fonts.googleapis.com/css?family=Open+Sans";
+  font-family: "Open Sans", sans-serif;
+  margin-top: auto;
+}
+
+/* Typography */
+footer {
+  h3 {
+    font-weight: lighter;
+    font-style: italic;
+    margin-bottom: 0;
+  }
+
+  p,
+  li {
+    font-weight: 400;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    margin: 10px 0;
+  }
+
+  a {
+    color: #fff;
+    text-decoration: none;
+    -webkit-transition: color 0.5s, background 0.5s;
+    transition: color 0.5s, background 0.5s;
+    &:hover {
+      color: #65c2ed;
+    }
+  }
+}
+
+/* Misc CSS */
+.clearfix {
+  &:before,
+  &:after {
+    content: "\0020";
+    display: block;
+    overflow: hidden;
+    visibility: hidden;
+    width: 0;
+    height: 0;
+    clear: both;
+  }
+}
+
+/* body {
+  margin: 0;
+}*/
+
+* {
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
 }
