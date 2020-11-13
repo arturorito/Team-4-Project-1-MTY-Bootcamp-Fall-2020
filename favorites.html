@@ -1,21 +1,24 @@
 <!DOCTYPE html>
+   
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
+  <head>
+     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Favorites</title>
-</head>
-<body>
-    
-</body>
-</html>
-<html>
-  <head>
-    <title>My Favorite Video Games</title>
     <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.4.1/semantic.min.css">
     <!-- Add custom stylesheet here -->
+    <link rel="stylesheet" href="style.css">
   </head>
-<body>  
+<body onload="get_localStorage()">  
+    <div class="ui menu">
+        <h2 id="Tittlehead">My favorite videogames, your #1 info source</h2>
+        <div class="right item" >
+            <label id="username" name="username"></label>
+        </div>
+         <div class="right item">
+             <a href="./application.html">Back to main app</a>
+         </div>
+     </div>
 <!--helps see the grids; can be removed later-->
 <style>
 .grid {border: 1px solid blue;}
@@ -23,9 +26,6 @@
 
 
 </style>
-
-  <h1><div style=text-align:center>Pending Nav Bar, Header, ETC...</div></h1>
-  <br>
   <div class="ui grid centered">
     <br>
 
@@ -216,10 +216,14 @@
 
 
 
+      <script src="logic.js"></script>
       <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
       <script
       src="https://code.jquery.com/jquery-3.1.1.min.js"
       integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8="
       crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.4.1/semantic.min.js"></script>    </body>
+       
+  </body>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.4.1/semantic.min.js"></script> 
+    <script src="semantic/dist/semantic.min.js"></script>    </body>
   </html>

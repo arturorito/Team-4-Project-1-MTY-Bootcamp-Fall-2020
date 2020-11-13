@@ -1,11 +1,23 @@
 <!DOCTYPE html>
 <html lang="en">
-
-  <head>
-    <title>Video Games Search</title>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.4.1/semantic.min.css">
-  </head>
-<body>
+    <link rel="stylesheet" href="style.css">
+     <title>Video Games Search</title>
+</head>
+<body onload="get_localStorage()">
+  <div class="ui menu">
+       <h2 id="Tittlehead">My favorite videogames, your #1 info source</h2>
+       <div class="right item" >
+           <label id="username" name="username"></label>
+       </div>
+        <div class="right item">
+            <a href="./favorites.html">My favorites</a>
+        </div>
+    </div>
+  
     <div class="ui action input">
         <input type="text" placeholder="Search for a video game" class="game-search">
         <button class="ui icon button game-click">
@@ -54,6 +66,10 @@
   </script>
 
 
+   <script src="logic.js"></script>
+  <!-- jQuery JS -->
+  <script src="https://code.jquery.com/jquery.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0/js/bootstrap.bundle.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script
       src="https://code.jquery.com/jquery-3.1.1.min.js"
