@@ -15,5 +15,3 @@ function get_localStorage(){
 }
 
 
-
-
