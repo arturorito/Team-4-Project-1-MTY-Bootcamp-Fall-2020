@@ -20,6 +20,137 @@
             <a href="./favorites.html">My favorites</a>
         </div>
     </div>
+  
+      <style>
+        .grid {border: 1px solid blue;}
+        .column {border: 1px solid red;}
+        
+        
+        </style>
+          <div class="ui grid centered">
+            <br>
+        
+            <!--left side columns-->
+            <div class="three wide column" style=text-align:center><h2>Recently Viewed or Best Buy/s Most Sold Games (if possible)</h2>
+            <br>
+              <div class="ui one cards">
+                <div class="card">
+                  <div class="image">
+                    <div class="ui placeholder">
+                      <div class="image"></div>
+                    </div> 
+                  </div>
+                  <div class="extra">
+                    Rating:
+                    <div class="ui star rating" data-rating="4"></div>
+                  </div>
+                </div>
+                <div class="card">
+                  <div class="image">
+                    <div class="ui placeholder">
+                      <div class="image"></div>
+                    </div> 
+                  </div>
+                  <div class="extra">
+                    Rating:
+                    <div class="ui star rating" data-rating="2"></div>
+                  </div>
+                </div>
+                <div class="card">
+                  <div class="image">
+                    <div class="ui placeholder">
+                      <div class="image"></div>
+                    </div> 
+                  </div>
+                  <div class="extra">
+                    Rating:
+                    <div class="ui star rating" data-rating="3"></div>
+                  </div>
+                </div>
+                <div class="card">
+                  <div class="image">
+                    <div class="ui placeholder">
+                      <div class="image"></div>
+                    </div> 
+                  </div>
+                  <div class="extra">
+                    Rating:
+                    <div class="ui star rating" data-rating="4"></div>
+                  </div>
+                </div>
+                <div class="card">
+                  <div class="image">
+                    <div class="ui placeholder">
+                      <div class="image"></div>
+                    </div> 
+                  </div>
+                  <div class="extra">
+                    Rating:
+                    <div class="ui star rating" data-rating="3"></div>
+                  </div>
+                </div>
+                <div class="card">
+                  <div class="image">
+                    <div class="ui placeholder">
+                      <div class="image"></div>
+                    </div> 
+                  </div>
+                  <div class="extra">
+                    Rating:
+                    <div class="ui star rating" data-rating="3"></div>
+                  </div>
+                </div>
+                <div class="card">
+                  <div class="image">
+                    <div class="ui placeholder">
+                      <div class="image"></div>
+                    </div> 
+                  </div>
+                  <div class="extra">
+                    Rating:
+                    <div class="ui star rating" data-rating="4"></div>
+                  </div>
+                </div>
+                <div class="card">
+                  <div class="image">
+                    <div class="ui placeholder">
+                      <div class="image"></div>
+                    </div> 
+                  </div>
+                  <div class="extra">
+                    Rating:
+                    <div class="ui star rating" data-rating="4"></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+              
+            <div class="one wide column">.</div>
+            <div class="eight wide column">
+              <h2><div class="column"><div class="ui action input">
+                <input type="text" placeholder="Search for a video game..." class="game-search">
+                <button class="ui icon button game-click">
+                  <i class="search icon"></i>
+                </button>
+              </div></div>
+            </h2>
+            <div id=clickResultsTitle class="ui massive message" style="text-align: center;">
+            <div id=clickResultsTitle2></div></div>
+              <br>
+            <div class="column"></div> 
+              <div class="column" >
+                <div class="ui three cards" id=game-results>
+                  <div class="card">
+                    <div class="image">
+                      <img>
+                    </div>
+                    <div class="extra">
+                      Rating:
+                      <div class="ui star rating" data-rating="4"></div>
+                    </div>
+                  </div>
+                </div>
+              </div>
 
 
 <section>
@@ -30,8 +161,12 @@
         </button>
       </div>
 
+              <div class="column"><i>"heart button" will remove Video Favorites you no longer want </i>
+              </div>
+            </div>
+          </div>
+          <h1><div style=text-align:center>Footer to be...</div></h1>
   <!-- We'll be dumping our JSON contents in here -->
-  <div id="game-results"></div>
 
   <!--URL: https://www.giantbomb.com/api/games/?api_key=52ca84e66e5367f593e2135a2e58d4acb13d3e3a
 
@@ -42,8 +177,13 @@
 
     // This .on("click") function will trigger the AJAX Call
     $(".game-click").on("click", function(event) {
+    
 
       event.preventDefault();
+   //will create the section detailing results will be posted below:
+      $("#clickResultsTitle").prepend("Search Results Below!")
+      $("#clickResultsTitle2").append("<h4>Choose a game to get more information:</h4>")
+      
 
       var gameName = $(".game-search").val();
       var apiURL = "https://www.giantbomb.com/api/games/?api_key="; 
@@ -59,13 +199,30 @@
         dataType: 'jsonp',
         jsonp: "json_callback",
       }).then(function(response) {
-        var newElement = $("<div>").text(response.results[3].name)
-        $("#game-results").append(newElement);
-      console.log(response);
+       
+//allows to do the loop
+        var searchResults = response.results
+//all the data but in one console log
+        console.log(searchResults);
+//lists how many results there are up to 101
+        console.log(searchResults.length);
+//get the data for the first result from the api response
+        console.log(searchResults[0])
+//the equation below does the loop:
+        for (var i = 0; i < searchResults.length; i++) {
+//creates the DIV and grabs the text name from the response that comes from the API
+          var gameName = $("<div class=card>").text(searchResults[i].name)
+        $("#game-results").append(gameName);
+//same thing as   -->  console.log(searchResults[0]) , but for each result and not just [0]
+          console.log(searchResults[i]);
+        }
+// now i can pull the results after i click on search
+//i want the computer to create information of ten titles from the results i pulled from 0-9//
+        
+
       });
 
       console.log(queryURL);
-      
 
     });
   </script>
@@ -93,9 +250,6 @@
             <a href="https://github.com/arturorito/Team-4-Project-1-MTY-Bootcamp-Fall-2020" target="_blank">GitHub</a>
         </div>
       </footer>
-
-    
-
   <script src="logic.js"></script>
   <!-- jQuery JS -->
   <script src="https://code.jquery.com/jquery.js"></script>
