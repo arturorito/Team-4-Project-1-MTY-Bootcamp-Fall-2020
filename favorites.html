@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Favorites</title>
     <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.4.1/semantic.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <!-- Add custom stylesheet here -->
     <link rel="stylesheet" href="style.css">
   </head>
@@ -22,8 +23,8 @@
      </div>
 <!--helps see the grids; can be removed later-->
 <style>
-.grid {border: 1px solid blue;}
-.column {border: 1px solid red;}
+ .grid {border: 13px outset #1C6EA4;}
+ .column {border: 13px outset #1C6EA4;}
 
 
 </style>
@@ -127,7 +128,7 @@
       
     <div class="one wide column">.</div>
     <div class="eight wide column">
-      <h2><div class="column">Choose a game for more information</div></h2>
+      <h2 class="label_success"><div class="column">Choose a game for more information</div></h2>
       <div class="ui fluid placeholder">
         <div class="image header">
           <div class="line"></div>
@@ -140,7 +141,7 @@
         </div>
       </div>
       <br>
-      <div class="column">Favorites: click on a game to get more information:
+      <div class="column"><h3 class="label_success">Favorites: click on a game to get more information: </h3>
       </div>
       <br>
       <div class="column">This section will show the favorites, up to three cards in a row.
@@ -209,7 +210,8 @@
         
         </div>
       </div>
-      <div class="column"><i>"heart button" will remove Video Favorites you no longer want </i>
+      <div class="column"> 
+        <button class="btn"><i class="fa fa-trash"></i> Remove from my favorites</button>
       </div>
     </div>
   </div>
