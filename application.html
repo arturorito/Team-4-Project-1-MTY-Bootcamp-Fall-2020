@@ -7,7 +7,10 @@
     <link rel="stylesheet" href="style.css">
      <title>Video Games Search</title>
 </head>
+
+
 <body onload="get_localStorage()">
+
   <div class="ui menu">
        <h2 id="Tittlehead">My favorite videogames, your #1 info source</h2>
        <div class="right item" >
@@ -18,7 +21,6 @@
         </div>
     </div>
   
-    
       <style>
         .grid {border: 1px solid blue;}
         .column {border: 1px solid red;}
@@ -150,6 +152,15 @@
                 </div>
               </div>
 
+
+<section>
+    <div class="ui action input">
+        <input type="text" placeholder="Search for a video game" class="game-search">
+        <button class="ui icon button game-click">
+          <i class="search icon"></i>
+        </button>
+      </div>
+
               <div class="column"><i>"heart button" will remove Video Favorites you no longer want </i>
               </div>
             </div>
@@ -215,8 +226,31 @@
 
     });
   </script>
+</section>
+    <!-- Footer -->
 
-   <script src="logic.js"></script>
+    <footer id="footerPage">
+        <div class="centered clearfix">
+          <div class="footer-contact">
+             <h3><a href="">Coding Bootcamp!</a></h3>
+             <p><a href="tel:">My Favorite Videogames</a></p>
+          </div>
+          <div class="footer-navigation">
+            <div class="footer-links-holder">
+              <h3><a href="">Team: </a></h3>
+              <ul class="footer-links">
+                <li><a href="">Arturo Rodriguez</a></li>
+                <li><a href="">Luis Contreras</a></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        <div class="bottom-bar">
+            2020-2021 Class | <a href="https://www.giantbomb.com/api/documentation/#toc-0-17" target="_blank">Videogames API</a> | 
+            <a href="https://github.com/arturorito/Team-4-Project-1-MTY-Bootcamp-Fall-2020" target="_blank">GitHub</a>
+        </div>
+      </footer>
+  <script src="logic.js"></script>
   <!-- jQuery JS -->
   <script src="https://code.jquery.com/jquery.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0/js/bootstrap.bundle.min.js"></script>
@@ -227,5 +261,5 @@
       crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.4.1/semantic.min.js"></script>    
 </body>
-  </html>
+</html>
   
