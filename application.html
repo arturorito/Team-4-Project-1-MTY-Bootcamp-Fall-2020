@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.4.1/semantic.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="style.css">
      <title>Video Games Search</title>
 </head>
@@ -21,9 +22,11 @@
         </div>
     </div>
   
+    <section>
       <style>
-        .grid {border: 1px solid blue;}
-        .column {border: 1px solid red;}
+
+       .grid {border: 13px outset #1C6EA4;}
+        .column {border: 13px outset #1C6EA4;}
 
         img {
     float: left;
@@ -32,13 +35,12 @@
     object-fit: scale-down;
 }
         
-        
         </style>
           <div class="ui grid centered">
             <br>
         
             <!--left side columns-->
-            <div class="three wide column" style=text-align:center><h2>Recently Viewed or Best Buy/s Most Sold Games (if possible)</h2>
+            <div class="three wide column" style=text-align:center><h2 class="label_success">Recently Viewed or Best Buy/s Most Sold Games (if possible)</h2>
             <br>
               <div class="ui one cards">
                 <div class="card">
@@ -75,32 +77,103 @@
                 <div class="ui three cards" id="gameResults" >
                 </div>
               </div>
-              <div class="column"><i>"heart button" will remove Video Favorites you no longer want </i>
+
+
+
+<section>
+    <div class="ui action input">
+        <input type="text" placeholder="Search for a video game" class="game-search">
+        <button class="ui icon button game-click">
+          <i class="search icon"></i>
+        </button>
+      </div>
+
+              <div class="column">
+                <button class="btn"><i class="fa fa-folder"></i> Add to favorites</button>
+                <button class="btn"><i class="fa fa-trash"></i> Remove from my favorites</button>
               </div>
             </div>
           </div>
   <!-- We'll be dumping our JSON contents in here -->
+
+
+  <!--URL: https://www.giantbomb.com/api/games/?api_key=52ca84e66e5367f593e2135a2e58d4acb13d3e3a
+
+    https://www.giantbomb.com/api/games/?api_key=52ca84e66e5367f593e2135a2e58d4acb13d3e3a&format=json&filter=name:pokemon
+    -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <script type="text/javascript">
+
+    // This .on("click") function will trigger the AJAX Call
+    $(".game-click").on("click", function(event) {
+    
+
+      event.preventDefault();
+   //will create the section detailing results will be posted below:
+      $("#clickResultsTitle").prepend("Search Results Below!")
+      $("#clickResultsTitle2").append("<h4>Choose a game to get more information:</h4>")
+      
+
+      var gameName = $(".game-search").val();
+      var apiURL = "https://www.giantbomb.com/api/games/?api_key="; 
+      var apikey = "52ca84e66e5367f593e2135a2e58d4acb13d3e3a";
+      var other = "&format=jsonp&json_callback&filter=name:"
+
+      var queryURL = apiURL + apikey + other + gameName 
+
+
+      $.ajax({
+        url: queryURL,
+        method: "GET",
+        dataType: 'jsonp',
+        jsonp: "json_callback",
+      }).then(function(response) {
+       
+//allows to do the loop
+        var searchResults = response.results
+//all the data but in one console log
+        console.log(searchResults);
+//lists how many results there are up to 101
+        console.log(searchResults.length);
+//get the data for the first result from the api response
+        console.log(searchResults[0])
+//the equation below does the loop:
+        for (var i = 0; i < searchResults.length; i++) {
+//creates the DIV and grabs the text name from the response that comes from the API
+          var gameName = $("<div class=card>").text(searchResults[i].name)
+        $("#game-results").append(gameName);
+//same thing as   -->  console.log(searchResults[0]) , but for each result and not just [0]
+          console.log(searchResults[i]);
+        }
+// now i can pull the results after i click on search
+//i want the computer to create information of ten titles from the results i pulled from 0-9//
+        
+
+      });
+
+      console.log(queryURL);
+
+    });
+  </script>
+</section>
+
+</section>
     <!-- Footer -->
 
     <footer id="footerPage">
-        <div class="centered clearfix">
-          <div class="footer-contact">
-             <h3><a href="">Coding Bootcamp!</a></h3>
-             <p><a href="tel:">My Favorite Videogames</a></p>
-          </div>
-          <div class="footer-navigation">
-            <div class="footer-links-holder">
-              <h3><a href="">Team: </a></h3>
-              <ul class="footer-links">
-                <li><a href="">Arturo Rodriguez</a></li>
-                <li><a href="">Luis Contreras</a></li>
-              </ul>
-            </div>
-          </div>
+      <div class="centered clearfix">
+        <div class="footer-contact">
+           <h3><a href="">Coding Bootcamp!</a></h3>
+           <p><a href="tel:">My Favorite Videogames</a></p>
         </div>
-        <div class="bottom-bar">
-            2020-2021 Class | <a href="https://www.giantbomb.com/api/documentation/#toc-0-17" target="_blank">Videogames API</a> | 
-            <a href="https://github.com/arturorito/Team-4-Project-1-MTY-Bootcamp-Fall-2020" target="_blank">GitHub</a>
+        <div class="footer-navigation">
+          <div class="footer-links-holder">
+            <h3><a href="">Team: </a></h3>
+            <ul class="footer-links">
+              <li><a href="">Arturo Rodriguez</a></li>
+              <li><a href="">Luis Contreras</a></li>
+            </ul>
+          </div>
         </div>
       </footer>
       <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
@@ -178,6 +251,13 @@
           });
         });
       </script>
+      </div>
+      <div class="bottom-bar">
+          2020-2021 Class | <a href="https://www.giantbomb.com/api/documentation/#toc-0-17" target="_blank">Videogames API</a> | 
+          <a href="https://github.com/arturorito/Team-4-Project-1-MTY-Bootcamp-Fall-2020" target="_blank">GitHub</a>
+      </div>
+    </footer>
+
   <script src="logic.js"></script>
   <!-- jQuery JS -->
   <script src="https://code.jquery.com/jquery.js"></script>
