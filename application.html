@@ -195,59 +195,89 @@
                 $("#BoxB").append("<h2><div id=finalDate></div></h2>");
                 $("#clickResultBox").append("<h3><div id=finalDesc></div></h3>"); 
                 $("#createBoxes2").before('<div class="column" id=favoriteButton></div>');
-                $("#favoriteButton").append('<button class="btn"><i class="fa fa-folder"></i> Add to favorites</button>')
-                $("#favoriteButton").append('<button class="btn"><i class="fa fa-trash"></i> Remove from my favorites</button>')
+                $("#favoriteButton").append('<button id=addFav class="btn"><i class="fa fa-folder"></i> Add to favorites</button>')
+                $("#favoriteButton").append('<button id=subFav class="btn"><i class="fa fa-trash"></i> Remove from my favorites</button>')
 
-              
-              $("#finalImage").empty();
-              $("#finalTitle").empty();
-              $("#finalDesc").empty();
-              $("#finalDate").empty();
+                $("#finalImage").empty();
+                $("#finalTitle").empty();
+                $("#finalDesc").empty();
+                $("#finalDate").empty();
 
 
-              
-              var $target = $(event.target);
-              var specificIndex =$target.data("index");
-              console.log(searchResults[i]);
-              console.log(specificIndex);
+                
+                var $target = $(event.target);
+                var specificIndex =$target.data("index");
+                console.log(searchResults[i]);
+                console.log(specificIndex.id);
 
-              var indexTitle = specificIndex.name;
-              var indexImage = specificIndex.image.original_url;
-              var indexDesc = specificIndex.description;
-              var indexDate = specificIndex.original_release_date;
+                var indexTitle = specificIndex.name;
+                var indexImage = specificIndex.image.original_url;
+                var indexDesc = specificIndex.description;
+                var indexDate = specificIndex.original_release_date;
 
-              console.log(indexTitle);
-              console.log(indexImage);
-              console.log(indexDesc);
-              console.log(indexDate);
+                console.log(indexTitle);
+                console.log(indexImage);
+                console.log(indexDesc);
+                console.log(indexDate);
 
-              var postTitle = $('<div>').text(indexTitle);
-              
-              var postImage = $('<img class="ui fluid mediumimage">');
-              postImage.attr('src', indexImage);
-              postImage.attr('alt', "missing game art")
+                var postTitle = $('<div>').text(indexTitle);
+                
+                var postImage = $('<img class="ui fluid mediumimage">');
+                postImage.attr('src', indexImage);
+                postImage.attr('alt', "missing game art")
 
-              var postDesc = $('<div>').html(indexDesc);
-              var postDate = $('<div>').text("Initial Release Date: ") + $('<br>').text(indexDate);
-              
-              $("#finalImage").append(postImage); 
+                var postDesc = $('<div>').html(indexDesc);
+                var postDate = $('<div>').text("Initial Release Date: ") + $('<br>').text(indexDate);
+                
+                $("#finalImage").append(postImage); 
                 $("#finalTitle").append(postTitle); 
-                  if (indexDesc == undefined){
-                    $('#finalDesc').append("Additional Information is Currently Unavailble")
-                  } else {
-                  $('#finalDesc').append(postDesc); }
+                if (indexDesc == undefined){
+                  $('#finalDesc').append("Additional Information is Currently Unavailble")
+                } else {
+                $('#finalDesc').append(postDesc); }
 
-                  if (indexDate == undefined) {
-                    $("#finalDate").append('<div>Initial Release Date: <br>' + "Information is Currently Unavailable");               
-                  } else {
-                    $("#finalDate").append('<div>Initial Release Date: <br>' + indexDate);  }            
-            })
-          }
-          });
-        });
-          
+                if (indexDate == undefined) {
+                  $("#finalDate").append('<div>Initial Release Date: <br>' + "Information is Currently Unavailable");               
+                } else {
+                  $("#finalDate").append('<div>Initial Release Date: <br>' + indexDate);  
+                }  
 
-        
+                //favorites functionality
+
+                var indexID = specificIndex.id;
+
+                var addFav = document.querySelector("#addFav"); 
+                var subFav = document.querySelector("#subFav");
+
+                var favSaved = localStorage.getItem("favorite_index")
+                
+                addFav.addEventListener("click", function() {
+                  alert("You have saved this game to your favorites!");
+                  console.log(indexID);
+                  localStorage.setItem("favorite_index", favSaved + ", " + indexID);
+                console.log([favSaved]);})
+                
+ 
+                  //subtractfunctionality
+                  
+
+               subFav.addEventListener("click", function() {
+                alert("You have removed this game from your favorites")
+                reduce = [localStorage.getItem("favorite_index")];
+                reduce.splice(reduce.indexOf(inde),1);
+                localStorage.setItem("favorite_index",reduce);})
+
+                liveFavorites= [localStorage.getItem("favorite_index")];
+                console.log(liveFavorites)
+
+              
+                
+
+              });
+            }
+          })
+        })
+
       </script>
       </div>
       <div class="bottom-bar">
