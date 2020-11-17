@@ -77,14 +77,14 @@
               <div class="ui massive message" style="text-align: center;">
                 <div id=clickResultsTitle></div>
                 <div id=clickResultsTitle2></div>
-                <div id=finalImage class="mediumimage"></div>
+                <div id=finalImage></div>
                 <div id=finalTitle></div>
                 <div id=finalDate></div>
                 <div id=finalDesc></div>
                 </div>
               <!--this is where the results will post-->
               <div  class="column" >
-                <div class="ui three cards iconimg" id="gameResults" >
+                <div class="ui three cards" id="gameResults" >
                 </div>
               </div>
 
@@ -158,7 +158,7 @@
  
               //will be used to create the element for the image of each game
               var imageUrl = searchResults[i].image.original_url;
-              var gameImage = $("<img class=\"ui fluid\">");
+              var gameImage = $("<img class=\"ui fluid iconimg\">");
               gameImage.attr("src", imageUrl);
               gameImage.attr("alt", "game image");
 
@@ -204,7 +204,7 @@
 
               var postTitle = $('<div>').text(indexTitle);
               
-              var postImage = $('<img class="ui fluid">');
+              var postImage = $('<img class="ui fluid mediumimage">');
               postImage.attr('src', indexImage);
               postImage.attr('alt', "missing game art")
 
