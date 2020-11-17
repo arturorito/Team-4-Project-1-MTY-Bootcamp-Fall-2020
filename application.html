@@ -31,12 +31,25 @@
         .iconimg {
     width:  210px;
     height: 210px;
-    object-fit: scale-down;}
+    object-fit: scale-down;
+    float: left;}
 
     .mediumimage {
     width: 300px;
     height: 300px;
     object-fit: scale-down;
+    float: left;}
+
+    #BoxA {
+      border: 0px;
+      margin: 0px;
+      padding: 0px;
+    }
+    
+    #BoxB {
+      border: 0px;
+      margin: 0px;
+      padding: 0px;
     }
         
         </style>
@@ -63,36 +76,19 @@
             <!--middle blank-->  
             <div class="one wide column">.</div>
             <!--right sode of screen-->
-            <div class="nine wide column">
+            <div class="nine wide column" id=createBoxes1>
               <!--creates the search button-->
               <div class="column">
-                <div class="ui action input">
-                  <h3><input type="text" placeholder="Search for a video game..." class="game-search">
+                <h3><div class="ui action input">
+                  <input type="text" placeholder="Search for a video game..." class="game-search">
                     <button class="ui icon button game-click">
                       <i class="search icon"></i>
                     </button>
                 </div>
               </div></h3>
-              <!--this is where the chosen game will show-->
-              <div class="ui massive message" style="text-align: center;">
-                <div id=clickResultsTitle></div>
-                <div id=clickResultsTitle2></div>
-                <div id=finalImage></div>
-                <div id=finalTitle></div>
-                <div id=finalDate></div>
-                <div id=finalDesc></div>
-                </div>
-              <!--this is where the results will post-->
-              <div  class="column" >
-                <div class="ui three cards" id="gameResults" >
-                </div>
-              </div>
-
-
-              <div class="column">
-                <button class="btn"><i class="fa fa-folder"></i> Add to favorites</button>
-                <button class="btn"><i class="fa fa-trash"></i> Remove from my favorites</button>
-              </div>
+              <!--this is where the results will post; informaton cannot be seen as the boxes will be created in JQUERY-->
+              <!--this is where the add/remove favorites option will be placed-->
+              
             </div>
           </div>
   <!-- We'll be dumping our JSON contents in here -->
@@ -104,11 +100,18 @@
           // prevnt the page from refreshing
           event.preventDefault();
           // fixes the search results caption from repeating it self a million times
-          $("#clickResultsTitle").empty();
-          $("#clickResultsTitle2").empty();
+          $("#favoriteButton").remove(); 
+          $("#createBoxes2").remove();
+          $("#createGameResultsSection").remove();
+          $("#createBoxes1").append('<div  class="column" id=createBoxes2></div>')
+          $("#createBoxes1").append('<div  class="column" id=createGameResultsSection></div>')
+          $("#createGameResultsSection").append('<div class="ui three cards" id="gameResults" ></div>')
+          $("#createBoxes2").prepend('<div class="ui massive message" id=searchResultBox style="text-align: center;"></div>');
+          $("#searchResultBox").prepend("<div id=clickResultsTitle></div>");
+          $("#searchResultBox").append("<div id=clickResultsTitle2></div>");
 
           //will create the section detailing results will be posted below:
-          $("#clickResultsTitle").prepend("Search Results Below!");
+          $("#clickResultsTitle").prepend("<h1>Search Results Below!</h1>");
           $("#clickResultsTitle2").append("<h4>Choose a game to get more information:</h4>");
           
           //components create the query url that will be used in ajax to get back data from third party API
@@ -180,8 +183,22 @@
               gameImage.data("index", response.results[i]);
 
               gameImage.on("click", function(event) {
-              $("#clickResultsTitle").empty(); 
-              $("#clickResultsTitle2").empty();
+                $("#favoriteButton").remove();
+                $("#searchResultBox").remove();
+                $("#clickResultBox").remove();
+                $("#createBoxes2").prepend('<div class="two column grid ui massive message" id=clickResultBox style="text-align: left;"></div>');
+                $("#clickResultBox").append('<div class="column" id=BoxA></div>')
+                $("#BoxA").append('<div style="display: inline-block" id=finalImage></div>');
+                $("#clickResultBox").append('<div class="column" id=BoxB></div>')
+
+                $("#BoxB").append("<h1><div id=finalTitle></div></h1>");
+                $("#BoxB").append("<h2><div id=finalDate></div></h2>");
+                $("#clickResultBox").append("<h3><div id=finalDesc></div></h3>"); 
+                $("#createBoxes2").before('<div class="column" id=favoriteButton></div>');
+                $("#favoriteButton").append('<button class="btn"><i class="fa fa-folder"></i> Add to favorites</button>')
+                $("#favoriteButton").append('<button class="btn"><i class="fa fa-trash"></i> Remove from my favorites</button>')
+
+              
               $("#finalImage").empty();
               $("#finalTitle").empty();
               $("#finalDesc").empty();
@@ -211,12 +228,19 @@
               postImage.attr('alt', "missing game art")
 
               var postDesc = $('<div>').html(indexDesc);
-              var postDate = $('<div>').text(indexDate);
+              var postDate = $('<div>').text("Initial Release Date: ") + $('<br>').text(indexDate);
               
               $("#finalImage").append(postImage); 
                 $("#finalTitle").append(postTitle); 
-                  $('#finalDesc').append(postDesc); 
-                    $("#finalDate").append(postDate);               
+                  if (indexDesc == undefined){
+                    $('#finalDesc').append("Additional Information is Currently Unavailble")
+                  } else {
+                  $('#finalDesc').append(postDesc); }
+
+                  if (indexDate == undefined) {
+                    $("#finalDate").append('<div>Initial Release Date: <br>' + "Information is Currently Unavailable");               
+                  } else {
+                    $("#finalDate").append('<div>Initial Release Date: <br>' + indexDate);  }            
             })
           }
           });
