@@ -182,15 +182,17 @@
               gameImage.on("click", function(event) {
               $("#clickResultsTitle").empty(); 
               $("#clickResultsTitle2").empty();
+              $("#finalImage").empty();
+              $("#finalTitle").empty();
+              $("#finalDesc").empty();
+              $("#finalDate").empty();
+
 
               
               var $target = $(event.target);
               var specificIndex =$target.data("index");
-            //    for (var j = 0; j < searchResults.length; j++) {
-
               console.log(searchResults[i]);
               console.log(specificIndex);
-             // var clickIndex = 
 
               var indexTitle = specificIndex.name;
               var indexImage = specificIndex.image.original_url;
@@ -214,11 +216,7 @@
               $("#finalImage").append(postImage); 
                 $("#finalTitle").append(postTitle); 
                   $('#finalDesc').append(postDesc); 
-                    $("#finalDate").append(postDate); 
-
-
-              //}
-              
+                    $("#finalDate").append(postDate);               
             })
           }
           });
