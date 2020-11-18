@@ -19,4 +19,10 @@ Acceptance criteria:
 API:
 https://www.giantbomb.com/api/documentation/#toc-0-17
 
+GitHub Code Link:
+https://github.com/arturorito/Team-4-Project-1-MTY-Bootcamp-Fall-2020
+Git Hub Website Link: 
+https://arturorito.github.io/Team-4-Project-1-MTY-Bootcamp-Fall-2020/
+
+
 ![Screenshot Index](./files/pantalla.png)
