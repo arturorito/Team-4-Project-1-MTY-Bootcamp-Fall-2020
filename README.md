@@ -1,6 +1,6 @@
 # Team-4-Project-1-MTY-Bootcamp-Fall-2020
 
-Group four: Rito, Francisco, Arturo
+Group four: Rito, Luis Francisco Contreras, Arturo
 
 User Story
 
@@ -17,11 +17,15 @@ Acceptance criteria:
 8. Favorites page has a button to go back to the main page or navigate directly to the welcome home page
 
 API:
+
 https://www.giantbomb.com/api/documentation/#toc-0-17
 
 GitHub Code Link:
+
 https://github.com/arturorito/Team-4-Project-1-MTY-Bootcamp-Fall-2020
+
 Git Hub Website Link: 
+
 https://arturorito.github.io/Team-4-Project-1-MTY-Bootcamp-Fall-2020/
 
 
